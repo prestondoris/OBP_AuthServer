@@ -10,14 +10,14 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     if config_overrides:
         app.config.update(config_overrides)
-    
+
     if not app.testing:
         logging.basicConfig(level=logging.INFO)
 
     with app.app_context():
         model = get_model()
         model.init_app(app)
-    
+
     from .crud import crud
     app.register_blueprint(crud, url_prefix='/')
 
@@ -27,5 +27,11 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         An internal error occurred: <pre>{}</pre>
         See logs for full stacktrace.
         """.format(e), 500
-        
+
     return app
+
+
+def get_model():
+    from . import model
+    model = model
+    return model

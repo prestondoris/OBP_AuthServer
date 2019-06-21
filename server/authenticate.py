@@ -2,8 +2,8 @@ import cryptography
 import jwt
 import time
 from os.path import abspath, exists
-from . import get_model
-from passlib import sha256_crypt
+from server import get_model
+from passlib.hash import sha256_crypt
 
 ISSUER = 'sample-auth-server'
 tokenDuration = 900000

@@ -7,4 +7,4 @@ You can create and manage projects at https://console.developers.google.com
 import os
 
 DATA_BACKEND = 'datastore'
-PROJECT_ID = ''
+PROJECT_ID = 'obp-authserver'

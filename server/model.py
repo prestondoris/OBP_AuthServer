@@ -33,9 +33,9 @@ def read(key):
     entity = ds.get(key)
     return from_datastore(entity)
 
-def update(data, key=None):
+def update(data):
     ds = get_client()
-    key = ds.key('User', key)
+    key = ds.key('User', data['email'])
 
     entity = datastore.Entity(key=key)
 

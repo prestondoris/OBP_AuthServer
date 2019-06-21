@@ -1,5 +1,5 @@
-from . import server 
-from . import config
+import server
+import config
 
 app = server.create_app(config)
 

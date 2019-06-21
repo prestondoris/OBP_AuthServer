@@ -1,9 +1,9 @@
 import json
-from .model import get_model
+from server import get_model
 from .authenticate import (
     verifyCredentials,
     authenticateClient, 
-    generateAccessToken, 
+    generateToken, 
     tokenDuration
 )
 from flask import Blueprint, request
@@ -28,14 +28,14 @@ def read():
             "error", "Access Denied - client not authorized"
         }), 401
     
-    user = get_model(email)
+    user = get_model.read(email)
     if user:
         if not verifyCredentials(user['email'], password, user['password']):
             return json.dumps({
                 "error": "Access Denied - invalid credentials"
             }), 401
         
-        return returnToken()
+        return returnToken(user)
     else:
         return json.dumps({
             "error": "User does not exist"
@@ -46,7 +46,7 @@ def read():
 @crud.route('/register', methods=["POST"])
 def create():
     email = request.form.get('email')
-    password = request.form.get('password')
+    password = hashPassword(request.form.get('password'))
     firstName = request.form.get('fName')
     lastName = request.form.get('lName')
     client_id = request.form.get('client_id')
@@ -69,7 +69,13 @@ def create():
         'lastName': lastName
     }
     user = get_model().create(data)
-    return returnToken()
+    print(user)
+    if user:        
+        return returnToken(user)
+    else:
+        return json.dumps({
+            "error": "An error occurred adding the user to the DB."
+        }), 401
 
 
 # @crud.route('/updateUser', methods=['POST'])
@@ -155,6 +161,7 @@ def updatePW():
 @crud.route('/delete', methods=["POST"])
 def delete():
     email = request.form.get('email')
+    password = request.form.get('password')
     client_id = request.form.get('client_id')
     client_secret = request.form.get('client_secret')
 
@@ -172,8 +179,8 @@ def delete():
 
 
 
-def returnToken():
-    authToken = generateAccessToken()
+def returnToken(user):
+    authToken = generateToken()
     return json.dumps({
         'access_token': authToken,
         'token_type': 'JWT',
