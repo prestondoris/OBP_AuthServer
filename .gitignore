@@ -1,3 +1,4 @@
 #Env Folder to Ignore
 env/
 server/__pycache__/
+private.pem
