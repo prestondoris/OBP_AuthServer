@@ -6,7 +6,8 @@ All requests are POST requests, and require data to be sent as form data. Parame
 
 All requests must be made from an authorized client (server) within the scope of the Application as a whole. Authorized clients must supply their custom Client ID and Client Secret that was supplied by this Auth Server with every request. They must also utilize the Public Key to decode the JWT.
 
-#### Verify Credentials
+
+### Verify Credentials
 **Route**: '/authenticate'
 
 **Method**: POST
@@ -18,7 +19,8 @@ All requests must be made from an authorized client (server) within the scope of
 * Client ID as 'client_id' 
 * Client Secret as 'client_secret
 
-#### Register User
+
+### Register User
 **Route**: '/register'
 
 **Method**: POST
@@ -32,7 +34,8 @@ All requests must be made from an authorized client (server) within the scope of
 * Client ID as 'client_id' 
 * Client Secret as 'client_secret
 
-#### Update Password
+
+### Update Password
 **Route**: '/updatepassword'
 
 **Method**: POST
@@ -45,7 +48,8 @@ All requests must be made from an authorized client (server) within the scope of
 * Client ID as 'client_id' 
 * Client Secret as 'client_secret
 
-#### Delete User
+
+### Delete User
 **Route**: '/delete'
 
 **Method**: POST
