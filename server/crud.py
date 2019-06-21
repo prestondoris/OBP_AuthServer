@@ -113,7 +113,7 @@ def create():
 #         }), 401
 
 
-@crud.route('/updatePassword', methods=["POST"])
+@crud.route('/updatepassword', methods=["POST"])
 def updatePW():
     email = request.form.get('email')
     oldPassword = request.form.get('oldPassword')
