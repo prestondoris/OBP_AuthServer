@@ -32,3 +32,7 @@ def generateToken():
         'iss': ISSUER,
         'exp': time.time() + tokenDuration
     }
+
+    access_token = jwt.encode(payload, private_key, algorithm='RS256')
+
+    return access_token.decode()

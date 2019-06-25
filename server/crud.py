@@ -28,7 +28,8 @@ def read():
             "error", "Access Denied - client not authorized"
         }), 401
     
-    user = get_model.read(email)
+    user = get_model().read(email)
+    print(user)
     if user:
         if not verifyCredentials(user['email'], password, user['password']):
             return json.dumps({
@@ -184,7 +185,9 @@ def returnToken(user):
     return json.dumps({
         'access_token': authToken,
         'token_type': 'JWT',
-        'expires_in': tokenDuration
+        'expires_in': tokenDuration,
+        'firstName': user['firstName'],
+        'lastName': user['lastName']
     })
 
 def hashPassword(pw):

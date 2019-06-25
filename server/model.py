@@ -24,18 +24,26 @@ def from_datastore(entity):
     if isinstance(entity, builtin_list):
         entity = entity.pop()
 
-    entity['id'] = entity.key.id 
+
+    entity['id'] = entity.key.id
+    print(entity)
     return entity
 
-def read(key):
+def read(email):
     ds=get_client()
-    key = ds.key('User', key)
-    entity = ds.get(key)
+    query = ds.query(kind='User')
+    query.add_filter('email', '=', email)
+    entity = list(query.fetch())
+    print(entity)
+    print(entity[0])
     return from_datastore(entity)
 
-def update(data):
+def update(data, id=None):
     ds = get_client()
-    key = ds.key('User', data['email'])
+    if id:
+        key = ds.key('User', int(id))
+    else:
+        key = ds.key('User')
 
     entity = datastore.Entity(key=key)
 
