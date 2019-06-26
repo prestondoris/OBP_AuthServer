@@ -69,8 +69,8 @@ def create():
         'firstName': firstName,
         'lastName': lastName
     }
+
     user = get_model().create(data)
-    print(user)
     if user:        
         return returnToken(user)
     else:

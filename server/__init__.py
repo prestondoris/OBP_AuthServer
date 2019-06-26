@@ -32,6 +32,6 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
 
 def get_model():
-    from . import model
-    model = model
+    from . import mongoModel
+    model = mongoModel
     return model
