@@ -38,7 +38,7 @@ def init_app(app):
 
 # [START read]
 def read(email):
-    result = mongo.db.users.find_one({'_id': _id(id)})
+    result = mongo.db.users.find_one({'email': email})
     return result
 # [END read]
 
