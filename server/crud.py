@@ -6,10 +6,14 @@ from .authenticate import (
     generateToken, 
     tokenDuration
 )
-from flask import Blueprint, request
+from flask import Blueprint, request, render_template
 from passlib.hash import sha256_crypt
 
 crud = Blueprint('crud', __name__)
+
+@crud.route('/')
+def main():
+    return render_template('index.html')
 
 @crud.route('/authenticate', methods=["POST"])
 def read():

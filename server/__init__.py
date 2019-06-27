@@ -21,6 +21,10 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     from .crud import crud
     app.register_blueprint(crud, url_prefix='/')
 
+    @app.route("/")
+    def index():
+        return redirect(url_for('crud.main'))
+
     @app.errorhandler(500)
     def server_error(e):
         return """
