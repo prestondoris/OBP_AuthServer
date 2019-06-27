@@ -1,7 +1,5 @@
 """
 This file contains all of the configuration values for the application.
-Update this file with the values for your specific Google Cloud project.
-You can create and manage projects at https://console.developers.google.com
 """
 
 import os
@@ -9,3 +7,30 @@ import os
 DATA_BACKEND = 'datastore'
 PROJECT_ID = 'obp-authserver'
 MONGO_URI = 'mongodb+srv://prestondoris:RosieLuna0425%21@cluster0-u5ypq.gcp.mongodb.net/AuthDB?retryWrites=true&w=majority'
+PRIVATE = '''-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA2DAikBgUwhlw/SqNTYW6LOxaovyWCCGFGGR0/9dLwh0Ju1+v
+srUDvvJS8BBSNn0Xu3Qj7ozL5wgenEz+/JBgThxJX2/j/HKFqZMQ+2NbD3mVs13k
+LdTdJ4blMjx1ePd1UQ10qtBbUePZkX2OxjseQIbVE7hi1/25okFM8dq42iC0HzhD
+DPGVSW5KON9wxPXCbLhQqW4sVJknCksH1X0/xCErEHbYDNVZrWfvR9ydwrZQIRQ6
+rZ0Wn7wT8JSrxKzteL/EgW2crn2WCOLMMKME69FqvQ4w0qSI3w1VyRrAQmmcsq5B
+ESCEPLIL3SW3tpFLukhO6xMvAIolVU+WBH/llQIDAQABAoIBAQCKZqZ54TDI4ki3
+itpTWt1JjTapSVMzeWIfr5BHialyZ+ynDCcLHV98it4V2h0HzSW4WC34tiKDkWsn
+XROQ1U0SNIG0m4k1QIvZd9FTXtQZIBl6bw15WeELQQzSEGqUOrfcX+TkxebwkhHj
+VqJkvcwsOyWGLnD5HfINsgh0fTYCTefGNCRCaDYTP9aFh3vLylxn+MxwHSSdT4X6
+IP6vUgPte4jjjAkdlC0SHDHER9dGdbmS9UPap30xHNE+1w2MITxC3HROyeUG+MkO
+B2ibijj5pfLYodUCQrlEXfCxbRGZR4Yc/lQQOnVTQO34lBhJPdpowl+PKYWt4oKj
+AyCJmzUxAoGBAPl1Kat3gs0NUcCkFc8t8g0t6gyIW09yDTZogbzYbFvUSHTNov3X
+CahdaPLN6w2ABYy0/+wWypVwMZjEi09zNzkP1mTIfZsRp3/54cLiSR8xu74YwELF
+JWmP0H2VKVicPbpcGQWFqClT5e+yyjtpHc8DpfaqQ/wxJiEJ29wTn1hfAoGBAN3b
+mk3vBrW2q1qEX8vkDX5p/3eY06t+3pv0pxgsF9OQLR6hAbVMMWcgisNcuBz/tn+q
+XzGFf2a/8StdYn2pmWJ5/eelnlfcKP61dCVUxveLYIzyR3PARqYDwM3bwGDNC04d
+P9PmLH17ozi8fbK+zm2QwB5mfIdI4pw3TlBalVaLAoGAQEgozL6nPh/IiVO/Kvwz
++6FxRnl8ziQds3+Krxc2FRPG+BJlhfP70R8BBFB72aa7x1589GGLIqceoLdFDtwp
+xtKF9MKVW3hZKWlC++1D2n3+WyYVpR8YXPNqTnI5jVP1tCg3amzewIeWIQZ5hoW3
+4LiX89A8ZKhlou3fcf68eRECgYAinulWbg16/9V/m5ajZ6QfbQUbsbKeWX79kVEd
++YuCTUZtOCzfENPIxxBAalCk3dap13lhbfaynxNQdBMxjuzLrEPOCU9LYKTZEpHc
+XX1rFcnsVMaHrqKXt5A3z6oWsQipmPDj7VBWCJww92EaKqJmAKeqVs3qApqyTAMh
+kPEq/wKBgQCOPgqVRxjOz2cJ9O2OLdj0zve8gV6RgIJoeJFSgVScoDNmcwA/1qft
+tAzwGECGgrh8qXsxUxuKYfY0hE7tLv3pyi8J93Fp3kDWy7o/Cn/ZzMkI/u5VMKpo
+ibVuihGvhmmlDd+8fpKnEMsZfK/vHQxSoPZ5MQ5YuRltqzxMJuDHfw==
+-----END RSA PRIVATE KEY-----'''

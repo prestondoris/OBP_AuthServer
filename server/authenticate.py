@@ -4,15 +4,12 @@ import time
 from os.path import abspath 
 from server import get_model
 from passlib.hash import sha256_crypt
+from flask import current_app
 
 ISSUER = 'sample-auth-server'
 tokenDuration = 900000
 
 global privateKeyPath
-
-privateKeyPath = abspath('private.pem')
-with open(privateKeyPath, 'rb') as file:
-    private_key = file.read()
 
 def verifyCredentials (email, password, hashedPW):
     isAuth = sha256_crypt.verify(password, hashedPW)
@@ -29,7 +26,7 @@ def authenticateClient(clientId, clientSecret):
         return False
 
 
-def generateToken():
+def generateToken(private_key):
     payload = {
         'iss': ISSUER,
         'exp': time.time() + tokenDuration

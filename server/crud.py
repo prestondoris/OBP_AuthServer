@@ -6,7 +6,7 @@ from .authenticate import (
     generateToken, 
     tokenDuration
 )
-from flask import Blueprint, request, render_template
+from flask import current_app, Blueprint, request, render_template
 from passlib.hash import sha256_crypt
 
 crud = Blueprint('crud', __name__)
@@ -184,13 +184,13 @@ def delete():
 
 
 def returnToken(user):
-    authToken = generateToken()
+    authToken = generateToken(current_app.config["PRIVATE"])
     return json.dumps({
         'access_token': authToken,
         'token_type': 'JWT',
         'expires_in': tokenDuration,
         'firstName': user['firstName'],
-        'lastName': user['lastName']
+        'lastName': user['lastName'],
     })
 
 def hashPassword(pw):
