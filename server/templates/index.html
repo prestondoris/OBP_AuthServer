@@ -7,6 +7,174 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Auth Server Loaded</h1>
+    <h1 id="obpauthserver">OBP Auth Server</h1>
+
+    <h3 id="apiendpoints">API Endpoints</h3>
+    
+    <p>All requests are POST requests, and require data to be sent as form data. Parameters for a successful request are listed below.</p>
+    
+    <p>All requests must be made from an authorized client (server) within the scope of the Application as a whole. Authorized clients must supply their custom Client ID and Client Secret that was supplied by this Auth Server with every request. They must also utilize the Public Key to decode the JWT.</p>
+    
+    <h3 id="verifycredentials">Verify Credentials</h3>
+    
+    <p><strong>Route</strong>: '/authenticate'</p>
+    
+    <p><strong>Method</strong>: POST</p>
+    
+    <p><strong>Parameters</strong>: </p>
+    
+    <ul>
+    <li>Email as 'email' </li>
+    
+    <li>Password as 'password' </li>
+    
+    <li>Client ID as 'client_id' </li>
+    
+    <li>Client Secret as 'client_secret</li>
+    </ul>
+    
+    <p><strong>Response</strong></p>
+    
+    <ul>
+    <li>200 - OK
+    <code>
+    {
+        access_token: access_token value,
+        token_type: 'jwt'
+        expires_in: expiration time,
+        firstName: user First Name,
+        lastName: user Last Name
+    } 
+    </code></li>
+    
+    <li>400 - Bad Request
+    <code>
+    {
+        "error": "Access Denied - invalid request"
+    }
+    </code></li>
+    
+    <li>401 - Unauthorized
+    <code>
+    {
+        "error": "Access Denied - client not authorized"
+    }
+    </code></li>
+    
+    <li>401 - Unauthorized
+    ```
+    {
+        "error": "Access Denied - invalid credentials"
+    }</li>
+    
+    <li>500 - Internal Server Error
+    <code>
+    {
+        'error': 'Error Connecting to DB'
+    }
+    </code></li>
+    </ul>
+    
+    <h3 id="registeruser">Register User</h3>
+    
+    <p><strong>Route</strong>: '/register'</p>
+    
+    <p><strong>Method</strong>: POST</p>
+    
+    <p><strong>Parameters</strong>: </p>
+    
+    <ul>
+    <li>Email as 'email' </li>
+    
+    <li>Password as 'password' </li>
+    
+    <li>First Name as'fName' </li>
+    
+    <li>Last Name as 'lName' </li>
+    
+    <li>Client ID as 'client_id' </li>
+    
+    <li>Client Secret as 'client_secret</li>
+    </ul>
+    
+    <p><strong>Response</strong></p>
+    
+    <ul>
+    <li>200 - OK 
+    <code>
+    {
+        access_token: access_token value,
+        token_type: 'jwt'
+        expires_in: expiration time,
+        firstName: user First Name,
+        lastName: user Last Name
+    } 
+    </code></li>
+    
+    <li>400 - Bad Request
+    <code>
+    {
+        "error": "Access Denied - invalid request"
+    }
+    </code></li>
+    
+    <li>401 - Unauthorized
+    <code>
+    {
+        "error": "Access Denied - client not authorized"
+    }
+    </code></li>
+    
+    <li>401 - Unauthorized
+    ```
+    {
+        "error": "This email already exists in the DB"
+    }</li>
+    
+    <li>500 - Internal Server Error
+    <code>
+    {
+        'error': 'Error Connecting to DB'
+    }
+    </code></li>
+    </ul>
+    
+    <h3 id="updatepassword">Update Password</h3>
+    
+    <p><strong>Route</strong>: '/updatepassword'</p>
+    
+    <p><strong>Method</strong>: POST</p>
+    
+    <p><strong>Parameters</strong>:</p>
+    
+    <ul>
+    <li>Email as 'email' </li>
+    
+    <li>Old Password as 'oldPassword' </li>
+    
+    <li>New Password as'newPassword </li>
+    
+    <li>Client ID as 'client_id' </li>
+    
+    <li>Client Secret as 'client_secret</li>
+    </ul>
+    
+    <h3 id="deleteuser">Delete User</h3>
+    
+    <p><strong>Route</strong>: '/delete'</p>
+    
+    <p><strong>Method</strong>: POST</p>
+    
+    <p><strong>Parameters</strong>:</p>
+    
+    <ul>
+    <li>Email as 'email' </li>
+    
+    <li>Password as 'password' </li>
+    
+    <li>Client ID as 'client_id' </li>
+    
+    <li>Client Secret as 'client_secret</li>
+    </ul>
 </body>
 </html>
