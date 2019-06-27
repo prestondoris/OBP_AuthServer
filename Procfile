@@ -1,1 +1,1 @@
-web: gunicorn task_list:'create_app()'
+web: gunicorn server:'create_app()'
