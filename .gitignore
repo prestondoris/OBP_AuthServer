@@ -2,3 +2,4 @@
 env/
 server/__pycache__/
 /private.pem
+/public.pem
