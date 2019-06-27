@@ -19,6 +19,40 @@ All requests must be made from an authorized client (server) within the scope of
 * Client ID as 'client_id' 
 * Client Secret as 'client_secret
 
+**Response**
+* 200 - OK
+    ```
+    {
+        access_token: access_token value,
+        token_type: 'jwt'
+        expires_in: expiration time,
+        firstName: user First Name,
+        lastName: user Last Name
+    } 
+    ```
+* 400 - Bad Request
+    ```
+    {
+        "error": "Access Denied - invalid request"
+    }
+    ```
+* 401 - Unauthorized
+    ```
+    {
+        "error": "Access Denied - client not authorized"
+    }
+    ```
+* 401 - Unauthorized
+    ```
+    {
+        "error": "Access Denied - invalid credentials"
+    }
+* 500 - Internal Server Error
+    ```
+    {
+        'error': 'Error Connecting to DB'
+    }
+    ```
 
 ### Register User
 **Route**: '/register'
@@ -33,6 +67,41 @@ All requests must be made from an authorized client (server) within the scope of
 * Last Name as 'lName' 
 * Client ID as 'client_id' 
 * Client Secret as 'client_secret
+
+**Response**
+* 200 - OK 
+    ```
+    {
+        access_token: access_token value,
+        token_type: 'jwt'
+        expires_in: expiration time,
+        firstName: user First Name,
+        lastName: user Last Name
+    } 
+    ```
+* 400 - Bad Request
+    ```
+    {
+        "error": "Access Denied - invalid request"
+    }
+    ```
+* 401 - Unauthorized
+    ```
+    {
+        "error": "Access Denied - client not authorized"
+    }
+    ```
+* 401 - Unauthorized
+    ```
+    {
+        "error": "This email already exists in the DB"
+    }
+* 500 - Internal Server Error
+    ```
+    {
+        'error': 'Error Connecting to DB'
+    }
+    ```
 
 
 ### Update Password

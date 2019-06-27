@@ -28,20 +28,16 @@ def read():
             "error", "Access Denied - client not authorized"
         }), 401
     
-    user = get_model().read(email)
-    print(user)
-    if user:
-        if not verifyCredentials(user['email'], password, user['password']):
-            return json.dumps({
-                "error": "Access Denied - invalid credentials"
-            }), 401
-        
-        return returnToken(user)
-    else:
+    result = get_model().read(email)
+    if 'error' in result:
+        return json.dumps(result), 500
+    elif not verifyCredentials(result['email'], password, result['password']):
         return json.dumps({
-            "error": "User does not exist"
+            "error": "Access Denied - invalid credentials"
         }), 401
-        
+    
+    return returnToken(result)
+    
 
 
 @crud.route('/register', methods=["POST"])
@@ -55,13 +51,13 @@ def create():
     
     if None in [email, password, firstName, lastName, client_id, client_secret]:
         return json.dumps({
-            "error": "invalid request"
+            "error": "Access Denied - invalid request"
         }), 400
     
     if not authenticateClient(client_id, client_secret):
         return json.dumps({
-        "error", "Access Denied - client not authorized"
-    }), 401
+            "error": "Access Denied - client not authorized"
+        }), 401
 
     data = {
         'email': email,
@@ -70,12 +66,15 @@ def create():
         'lastName': lastName
     }
 
-    user = get_model().create(data)
-    if user:        
-        return returnToken(user)
+    result = get_model().create(data)
+    if result:
+        if 'error' in result:
+            return json.dumps(result), 500
+        else:
+            return returnToken(result)
     else:
         return json.dumps({
-            "error": "An error occurred adding the user to the DB."
+            "error": "This email already exists in the DB"
         }), 401
 
 
@@ -192,4 +191,3 @@ def returnToken(user):
 
 def hashPassword(pw):
     return sha256_crypt.encrypt(pw)
-
